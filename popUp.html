@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PopUp using JSON</title>
+    <style>
+        body{
+            background-color: #efccae;
+            margin: 0;
+        }
+        .popup{
+            background-color: white;
+            width: 400px;
+            height: 300px;
+            border-radius: 16px;
+            position: fixed;
+            inset: 0;
+            margin: auto;
+            box-shadow: 0px 5px 4px 2px #8c623e ;
+            visibility: hidden;
+        }
+        .popup-open .popup{
+            visibility: visible;
+        }
+        .closePopUp{
+            left: 360px;
+            font-size: 32px;
+            font-weight: 700;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .info{
+            position:relative;
+            left: 20px;
+        }    
+        .overlay{
+            display: none;
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .popup-open .overlay{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <button class="Btn">click me!</button>
+    <div class="popup-container">
+        <div class="overlay"></div>
+        <div class="popup">
+            <div class="closePopUp">&times;</div>
+            <form action="" class="info">
+                <br>
+                Name: <input type="text">
+                <br><br>
+                Address:<input type="text">
+                <br><br>
+                E mail : <input type="email" name="email">
+                <br><br>
+                phone number: <input type="number">
+                <br><br>
+                <button type="submit">Submit form</button>
+            </form>
+        </div>
+    </div>
+   
+
+
+    <script>
+        const button = document.querySelector('.Btn');
+        const popup = document.querySelector('.popup-container')
+        const overlay = document.querySelector('.overlay')
+        const closeicon = document.querySelector('.closePopUp')
+
+        button.addEventListener('click', () => {
+            popup.classList.add('popup-open');
+        })
+        closeicon.addEventListener('click', () => {
+            popup.classList.remove('popup-open');
+        })
+        overlay.addEventListener('click', () => {
+            popup.classList.remove('popup-open');
+        })
+    </script>
+</body>
+</html>
